@@ -32,6 +32,10 @@ def evaluation4class(prediction, y):  # 4 dim
 
     ## print result
     Acc_all = round(float(TP1 + TP2 + TP3 + TP4) / float(len(y) ), 4)
+    print('TP1: ' + str(TP1))
+    print('TN1: ' + str(TN1))
+    print('FN1: ' + str(FN1))
+    print('FP1: ' + str(FP1))
     Acc1 = round(float(TP1 + TN1) / float(TP1 + TN1 + FN1 + FP1), 4)
     if (TP1 + FP1)==0:
         Prec1 =0

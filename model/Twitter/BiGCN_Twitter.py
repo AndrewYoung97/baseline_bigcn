@@ -157,6 +157,8 @@ def train_GCN(treeDic, x_test, x_train,TDdroprate,BUdroprate,lr, weight_decay,pa
             val_acc = correct / len(Batch_data.y)
             Acc_all, Acc1, Prec1, Recll1, F1, Acc2, Prec2, Recll2, F2, Acc3, Prec3, Recll3, F3, Acc4, Prec4, Recll4, F4 = evaluation4class(
                 val_pred, Batch_data.y)
+            print('Acc1: ' + str(Acc1))
+            print('Prec1: ' + str(Prec1))
             temp_val_Acc_all.append(Acc_all), temp_val_Acc1.append(Acc1), temp_val_Prec1.append(
                 Prec1), temp_val_Recll1.append(Recll1), temp_val_F1.append(F1), \
             temp_val_Acc2.append(Acc2), temp_val_Prec2.append(Prec2), temp_val_Recll2.append(
@@ -198,25 +200,21 @@ def train_GCN(treeDic, x_test, x_train,TDdroprate,BUdroprate,lr, weight_decay,pa
             break
     return train_losses , val_losses ,train_accs, val_accs,accs,F1,F2,F3,F4
 
-print('cuda' + str(th.cuda.is_available()))
 
 lr=0.0005
 weight_decay=1e-4
 patience=10
-n_epochs=5
+n_epochs=200
 batchsize=128
 TDdroprate=0.2
 BUdroprate=0.2
 datasetname=sys.argv[1] #"Twitter15"、"Twitter16"
-gpu=int(sys.argv[3])
 iterations=int(sys.argv[2])
 model="GCN"
-th.cuda.set_device(3)
 device = th.device("cuda" if th.cuda.is_available() else "cpu")
 print('cuda' + str(th.cuda.is_available()))
 # if device == 'cuda':
 #     th.cuda.set_device(3)
-'''
 test_accs = []
 NR_F1 = []
 FR_F1 = []
@@ -286,5 +284,4 @@ for iter in range(iterations):
     UR_F1.append((F4_0 + F4_1 + F4_2 + F4_3 + F4_4) / 5)
 print("Total_Test_Accuracy: {:.4f}|NR F1: {:.4f}|FR F1: {:.4f}|TR F1: {:.4f}|UR F1: {:.4f}".format(
     sum(test_accs) / iterations, sum(NR_F1) /iterations, sum(FR_F1) /iterations, sum(TR_F1) / iterations, sum(UR_F1) / iterations))
-'''
 

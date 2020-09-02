@@ -10,5 +10,5 @@ python ./Process/getTwittergraph.py Twitter15
 # python ./Process/getTwittergraph.py Twitter16
 #Reproduce the experimental results.
 #python ./model/Weibo/BiGCN_Weibo.py 100
-python ./model/Twitter/BiGCN_Twitter.py Twitter15 1 3
+python ./model/Twitter/BiGCN_Twitter.py Twitter15 1 
 #python ./model/Twitter/BiGCN_Twitter.py Twitter16 100
